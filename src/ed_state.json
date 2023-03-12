@@ -1,0 +1,44 @@
+{
+  "resources": [
+    { "doctor": 10 }, { "nurse": 10 }, {"wardie": 10}, {"lab": 5}, {"xray_staff": 5}],
+  "tasks":[
+  {"name":"bed_alloc", "resource":"nurse" ,"duration":10},
+  {"name":"medical_ass", "resource":"doctor" ,"duration":20},
+  {"name":"vital_signs", "resource":"nurse" ,"duration":15},
+  {"name":"take_bloods", "resource":"nurse" ,"duration":10},
+  {"name":"pathology_test", "resource":"lab" ,"duration":60},
+  {"name":"review_discharge", "resource":"doctor" ,"duration":10},
+  {"name":"xray", "resource":"xray_stuff" ,"duration":30},
+  {"name":"plastering", "resource":"doctor" ,"duration":30},
+  {"name":"anaesthetic", "resource":"nurse" ,"duration":30},
+  {"name":"anaesthetic_rec", "resource":"nurse" ,"duration":30},
+  {"name":"sutures", "resource":"doctor" ,"duration":30},
+  {"name":"discharge", "resource":"nurse" ,"duration":20},
+  {"name":"nurse_treatment", "resource":"nurse" ,"duration":20},
+  {"name":"patient_notes", "resource":"doctor" ,"duration":20},
+  {"name":"admit_impatient_unit", "resource":"doctor" ,"duration":10},
+  {"name":"transfer_impatient_unit", "resource":"wardie" ,"duration":30}],
+  "treatment_paths":[
+  {"name":"path1", "tasks":["bed_alloc", "medical_ass", "vital_signs", "review_discharge"]},
+  {"name":"path21", "tasks":["bed_alloc", "medical_ass", "xray", "plastering", "anaesthetic_rec", "review_discharge"]},
+  {"name":"path22", "tasks":["bed_alloc", "medical_ass", "xray", "anaesthetic", "anaesthetic_rec", "review_discharge"]},
+  {"name":"path31", "tasks":["bed_alloc", "medical_ass", "sutures", "discharge"]},
+  {"name":"path32", "tasks":["bed_alloc", "medical_ass", "nurse_treatment", "discharge"]},
+  {"name":"path42", "tasks":["bed_alloc", "medical_ass", "take_bloods", "pathology_test", "admit_impatient_unit", "transfer_impatient_unit"]},
+  {"name":"path43", "tasks":["bed_alloc", "vital_signs", "patient_notes", "admit_impatient_unit", "transfer_impatient_unit"]}
+  ],  
+  "triage_classes":[
+    { "class":1, "response_time_thres":0, "response_period":0, "weight":12},
+    { "class":2, "response_time_thres":10, "response_period":1, "weight":6},
+    { "class":3, "response_time_thres":30, "response_period":3, "weight":3},
+    { "class":4, "response_time_thres":60, "response_period":6, "weight":2},
+    { "class":5, "response_time_thres":120, "response_period":12, "weight":1}
+  ],
+  "beds":30,
+  "patient_queue_size": 100,
+  "new_patient_arrival": 0,
+  "patient_number": 1,
+  "triage_level": 3,
+  "timestamp": 1
+}
+
