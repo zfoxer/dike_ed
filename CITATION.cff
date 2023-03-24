@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Kyriakopoulos
+    given-names: Constantine
+    orcid: https://orcid.org/0000-0001-7874-2205
+title: "Dike-ED: Discrete-event simulator for medical emergency department resource allocation"
+version: 0.3.0
+doi: 10.5281/zenodo.7768633
+date-released: 2023-03-12
