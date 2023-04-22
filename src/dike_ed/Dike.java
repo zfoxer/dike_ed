@@ -349,7 +349,7 @@ public class Dike
      */
     private void initAlgos()
     {
-        algos.add(new AcoPathEdRt());
+        //algos.add(new AcoPathEdRt());
 
         for(Algorithm algo : algos)
             algo.setResources(doctors, nurses, wardies, labs, xRaysStaff);
@@ -738,6 +738,6 @@ public class Dike
      */
     public static void main(String... args)
     {
-        executeCL();
+        //executeCL();
     }
 }

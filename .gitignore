@@ -1,7 +1,7 @@
 #IDE
 .idea/
 out/
-sdes.iml
+dike_ed.iml
 
 # Compiled class file
 *.class
