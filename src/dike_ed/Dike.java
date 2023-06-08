@@ -119,12 +119,12 @@ public class Dike
         /**
          *  The resource related to this task
          */
-        final Dike.RESOURCE resource;
+        public final Dike.RESOURCE resource;
 
         /**
          *  Task's duration
          */
-        final int duration;
+        public final int duration;
 
         /**
          *  Typical constructor for the task
@@ -349,7 +349,7 @@ public class Dike
      */
     private void initAlgos()
     {
-        algos.add(new dike_ed.plugin.ztest.AlgoImpl());
+        algos.add(new dike_ed.plugin.rres.PluginImpl().createAlgo());
 
         for(dike_ed.spi.Algo algo : algos)
             algo.setResources(doctors, nurses, wardies, labs, xRaysStaff);

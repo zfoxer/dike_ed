@@ -21,7 +21,7 @@
  *
  */
 
-package dike_ed.plugin.ztest;
+package dike_ed.plugin.rres;
 
 import dike_ed.spi.*;
 
@@ -38,6 +38,6 @@ public class PluginImpl implements Plugin
     @Override
     public Algo createAlgo()
     {
-        return new AlgoImpl();
+        return new RandomResourceAlgo();
     }
 }
