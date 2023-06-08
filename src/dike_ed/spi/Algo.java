@@ -23,36 +23,85 @@
 
 package dike_ed.spi;
 
-/**
- *  Interface for algorithms to execute as plugins.
- */
-public interface Algo
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Vector;
+
+public abstract class Algo
 {
     /**
-     *  Provides updated resource state.
-     *
-     *  @param jSonRes JSON text with resources.
+     *  Predefined treatment paths. Each path is a sequence of tasks.
      */
-    void updResources(String jSonRes);
+    protected List<dike_ed.Dike.TASK> treatPath1, treatPath21, treatPath22, treatPath31, treatPath32, treatPath41,
+            treatPath42, treatPath43;
 
     /**
-     *  Executes the resource allocation process.
+     *  Ability to set the local resources from vector containers.
      *
-     *  @return String Allocated resources in JSON.
+     *  @param doctors A container with doctor resources.
+     *  @param nurses A container with nurse resources.
+     *  @param wardies A container with wardie resources.
+     *  @param labs A container with lab resources.
+     *  @param xRayStaff A container with XRay staff resources.
      */
-    String run();
+    public abstract void setResources(Vector<dike_ed.Resource> doctors, Vector<dike_ed.Resource> nurses, Vector<dike_ed.Resource> wardies,
+                                      Vector<dike_ed.Resource> labs, Vector<dike_ed.Resource> xRayStaff);
 
     /**
-     *  Indicates if the allocation process finished.
+     *  Ability to set the local resources from a JSON file.
      *
-     *  @return boolean If false, allocation finished.
+     *  @param jsonRes The JSON file containing the resources.
      */
-    boolean repeat();
+    public abstract void setResourcesFromJSON(String jsonRes);
 
     /**
-     *  Describes this algorithm implementation.
+     *  Allocates a sequence of tasks to a patient.
      *
-     *  @return String A text description of the algo implementation.
+     *  @param patient The patient to allocate tasks to.
+     *  @param simTime Current simulation time.
+     *  @return The duration of the task sequence.
      */
-    String description();
+    public abstract int allocateTasks(dike_ed.Patient patient, int simTime);
+
+    /**
+     *  Allocates a sequence of tasks to a patient.
+     *
+     *  @return The description of this algorithm.
+     */
+    public abstract String description();
+
+    /**
+     *  Initialises the available sequence of tasks for patients.
+     */
+    protected void initTreatPaths()
+    {
+        //  Hardcoded treatment paths.
+        treatPath1 = Arrays.asList(dike_ed.Dike.TASK.BED_ALLOC, dike_ed.Dike.TASK.MEDICAL_ASS, dike_ed.Dike.TASK.VITAL_SIGNS, dike_ed.Dike.TASK.REVIEW_DISCHARGE);
+        treatPath21 = Arrays.asList(dike_ed.Dike.TASK.BED_ALLOC, dike_ed.Dike.TASK.MEDICAL_ASS, dike_ed.Dike.TASK.X_RAY, dike_ed.Dike.TASK.PLASTERING,
+                dike_ed.Dike.TASK.ANAESTHETIC_REC, dike_ed.Dike.TASK.REVIEW_DISCHARGE);
+        treatPath22 = Arrays.asList(dike_ed.Dike.TASK.BED_ALLOC, dike_ed.Dike.TASK.MEDICAL_ASS, dike_ed.Dike.TASK.X_RAY, dike_ed.Dike.TASK.ANAESTHETIC,
+                dike_ed.Dike.TASK.ANAESTHETIC_REC, dike_ed.Dike.TASK.REVIEW_DISCHARGE);
+        treatPath31 = Arrays.asList(dike_ed.Dike.TASK.BED_ALLOC, dike_ed.Dike.TASK.MEDICAL_ASS, dike_ed.Dike.TASK.SUTURES, dike_ed.Dike.TASK.DISCHARGE);
+        treatPath32 = Arrays.asList(dike_ed.Dike.TASK.BED_ALLOC, dike_ed.Dike.TASK.MEDICAL_ASS, dike_ed.Dike.TASK.NURSE_TREATMENT, dike_ed.Dike.TASK.DISCHARGE);
+        treatPath41 = Arrays.asList(dike_ed.Dike.TASK.BED_ALLOC, dike_ed.Dike.TASK.MEDICAL_ASS, dike_ed.Dike.TASK.PATIENT_NOTES,
+                dike_ed.Dike.TASK.ADMIT_IMPATIENT_UNIT, dike_ed.Dike.TASK.TRANSFER_IMPATIENT_UNIT);
+        treatPath42 = Arrays.asList(dike_ed.Dike.TASK.BED_ALLOC, dike_ed.Dike.TASK.MEDICAL_ASS, dike_ed.Dike.TASK.TAKE_BLOODS, dike_ed.Dike.TASK.PATHOLOGY_TEST,
+                dike_ed.Dike.TASK.ADMIT_IMPATIENT_UNIT, dike_ed.Dike.TASK.TRANSFER_IMPATIENT_UNIT);
+        treatPath43 = Arrays.asList(dike_ed.Dike.TASK.BED_ALLOC, dike_ed.Dike.TASK.VITAL_SIGNS, dike_ed.Dike.TASK.PATIENT_NOTES,
+                dike_ed.Dike.TASK.ADMIT_IMPATIENT_UNIT, dike_ed.Dike.TASK.TRANSFER_IMPATIENT_UNIT);
+    }
+
+    /**
+     *  Picks up a uniformly random treatment path.
+     *
+     *  @return The treatment path.
+     */
+    protected List<dike_ed.Dike.TASK> randomTreatPath()
+    {
+        List<List<dike_ed.Dike.TASK>> tasks = new ArrayList<>(Arrays.asList(treatPath1, treatPath21, treatPath22, treatPath31,
+                treatPath32, treatPath41, treatPath42, treatPath43));
+
+        return (List<dike_ed.Dike.TASK>)tasks.toArray()[(int)(tasks.size() * Math.random())];
+    }
 }

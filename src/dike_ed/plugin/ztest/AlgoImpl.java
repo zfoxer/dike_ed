@@ -23,39 +23,51 @@
 
 package dike_ed.plugin.ztest;
 
+import dike_ed.Resource;
 import dike_ed.spi.*;
+
+import java.util.Vector;
 
 /**
  *  A test algorithm implementation.
  */
-public class AlgoImpl implements Algo
+public class AlgoImpl extends Algo
 {
     /**
-     *  Provides updated resource state.
+     *  Ability to set the local resources from vector containers.
      *
-     *  @param jSonRes JSON text with resources.
+     *  @param doctors A container with doctor resources.
+     *  @param nurses A container with nurse resources.
+     *  @param wardies A container with wardie resources.
+     *  @param labs A container with lab resources.
+     *  @param xRayStaff A container with XRay staff resources.
      */
-    @Override
-    public void updResources(String jSonRes) { }
+    public void setResources(Vector<Resource> doctors, Vector<dike_ed.Resource> nurses, Vector<dike_ed.Resource> wardies,
+                                      Vector<dike_ed.Resource> labs, Vector<dike_ed.Resource> xRayStaff)
+    {
 
-    /**
-     *  Executes the resource allocation process.
-     *
-     *  @return String Allocated resources in JSON.
-     */
-    @Override
-    public String run() {
-        return null;
     }
 
     /**
-     *  Indicates if the allocation process finished.
+     *  Ability to set the local resources from a JSON file.
      *
-     *  @return boolean If false, allocation finished.
+     *  @param jsonRes The JSON file containing the resources.
      */
-    @Override
-    public boolean repeat() {
-        return false;
+    public void setResourcesFromJSON(String jsonRes)
+    {
+
+    }
+
+    /**
+     *  Allocates a sequence of tasks to a patient.
+     *
+     *  @param patient The patient to allocate tasks to.
+     *  @param simTime Current simulation time.
+     *  @return The duration of the task sequence.
+     */
+    public int allocateTasks(dike_ed.Patient patient, int simTime)
+    {
+        return 0;
     }
 
     /**

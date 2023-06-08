@@ -2,7 +2,7 @@
  * Dike ED: Discrete-event simulator for medical emergency departments.
  * Copyright (C) 2021, 2022, 2023 by Constantine Kyriakopoulos
  * zfox@users.sourceforge.net
- * @version 0.3.0
+ * @version 0.3.5
  *
  * @section LICENSE
  *
@@ -139,7 +139,7 @@ public class Dike
     /**
      *  Hardcoded version number
      */
-    private static final String VERSION = "0.3.0";
+    private static final String VERSION = "0.3.5";
 
     /**
      *  Pool containing all the events
@@ -194,7 +194,7 @@ public class Dike
     /**
      *  Available algorithms in here
      */
-    private Vector<Algorithm> algos = new Vector<>();
+    private Vector<dike_ed.spi.Algo> algos = new Vector<>();
 
     /**
      *  Number of queued patients
@@ -349,9 +349,9 @@ public class Dike
      */
     private void initAlgos()
     {
-        //algos.add(new AcoPathEdRt());
+        algos.add(new dike_ed.plugin.ztest.AlgoImpl());
 
-        for(Algorithm algo : algos)
+        for(dike_ed.spi.Algo algo : algos)
             algo.setResources(doctors, nurses, wardies, labs, xRaysStaff);
     }
 
@@ -677,13 +677,13 @@ public class Dike
     /**
      *  Loads the external algorithms as plugins
      *
-     *  @return Vector<Algorithm> A container with the initialised algorithms
+     *  @return Vector<dike_ed.spi.Algo> A container with the initialised algorithms
      */
-    public static Vector<Algorithm> loadPlugins()
+    public static Vector<dike_ed.spi.Algo> loadPlugins()
     {
-        Vector<Algorithm> allProviders = new Vector<>();
-        ServiceLoader<Algorithm> serviceLoader = ServiceLoader.load(Algorithm.class);
-        for(Algorithm provider : serviceLoader)
+        Vector<dike_ed.spi.Algo> allProviders = new Vector<>();
+        ServiceLoader<dike_ed.spi.Algo> serviceLoader = ServiceLoader.load(dike_ed.spi.Algo.class);
+        for(dike_ed.spi.Algo provider : serviceLoader)
             allProviders.add(provider);
 
         return allProviders;
@@ -695,8 +695,8 @@ public class Dike
     private void testPlugins()
     {
         System.out.println("Loading plugins...");
-        Vector<Algorithm> providers = loadPlugins();
-        for(Algorithm provider : providers)
+        Vector<dike_ed.spi.Algo> providers = loadPlugins();
+        for(dike_ed.spi.Algo provider : providers)
             System.out.println(provider.description());
     }
 
@@ -738,6 +738,6 @@ public class Dike
      */
     public static void main(String... args)
     {
-        //executeCL();
+        executeCL();
     }
 }
