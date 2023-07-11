@@ -11,6 +11,6 @@ License: GNU GPL Version 2
 
 <pre>
 0.3.5      2023-XX-XX    Clean-up code
-                         Introduce algorithm plugin API
+                         Introduce a simple algorithm plugin API
 0.3.0      2023-03-12    Initial public release
 </pre>

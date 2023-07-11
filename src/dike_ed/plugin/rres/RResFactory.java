@@ -21,17 +21,23 @@
  *
  */
 
-package dike_ed.spi;
+package dike_ed.plugin.rres;
+
+import dike_ed.plugin_api.*;
 
 /**
  *  Factory class to provide new algorithm instances.
  */
-public interface Plugin
+public class RResFactory implements Plugin
 {
     /**
-     *  Factory method to give control over the algorithm creation procedure.
+     *  Factory method to give control over the algorithm creation process.
      *
-     *  @return Algo Interface to the actual algorithm implementation.
+     *  @return Algo Interface pointing to the actual algorithm implementation.
      */
-    Algo createAlgo();
+    @Override
+    public Algo createAlgo()
+    {
+        return new RandomResourceAlgo();
+    }
 }

@@ -24,9 +24,9 @@
 package dike_ed;
 
 import org.json.simple.parser.ParseException;
-
 import java.io.IOException;
 import java.util.*;
+import dike_ed.plugin.rres.*;
 
 /**
  *  Dike is the main simulation engine for Emergency Departments (EDs) of hospitals. This is
@@ -194,7 +194,7 @@ public class Dike
     /**
      *  Available algorithms in here
      */
-    private Vector<dike_ed.spi.Algo> algos = new Vector<>();
+    private Vector<dike_ed.plugin_api.Algo> algos = new Vector<>();
 
     /**
      *  Number of queued patients
@@ -349,9 +349,9 @@ public class Dike
      */
     private void initAlgos()
     {
-        algos.add(new dike_ed.plugin.rres.PluginImpl().createAlgo());
+        algos.add(new RResFactory().createAlgo());
 
-        for(dike_ed.spi.Algo algo : algos)
+        for(dike_ed.plugin_api.Algo algo : algos)
             algo.setResources(doctors, nurses, wardies, labs, xRaysStaff);
     }
 
@@ -675,32 +675,6 @@ public class Dike
     }
 
     /**
-     *  Loads the external algorithms as plugins
-     *
-     *  @return Vector<dike_ed.spi.Algo> A container with the initialised algorithms
-     */
-    public static Vector<dike_ed.spi.Algo> loadPlugins()
-    {
-        Vector<dike_ed.spi.Algo> allProviders = new Vector<>();
-        ServiceLoader<dike_ed.spi.Algo> serviceLoader = ServiceLoader.load(dike_ed.spi.Algo.class);
-        for(dike_ed.spi.Algo provider : serviceLoader)
-            allProviders.add(provider);
-
-        return allProviders;
-    }
-
-    /**
-     *  A Simple test for the loading capability of external algorithms
-     */
-    private void testPlugins()
-    {
-        System.out.println("Loading plugins...");
-        Vector<dike_ed.spi.Algo> providers = loadPlugins();
-        for(dike_ed.spi.Algo provider : providers)
-            System.out.println(provider.description());
-    }
-
-    /**
      *  Provides programme usage details
      *
      *  @return String Usage details
@@ -708,13 +682,13 @@ public class Dike
     private static String usage()
     {
         return "Dike " + VERSION
-                + "\n(C) 2022 by Constantine Kyriakopoulos"
+                + "\n(C) 2022-2023 by Constantine Kyriakopoulos"
                 + "\nReleased under GNU GPL v2"
                 + "\n\nUsage: java -jar dike.jar ...\n";
     }
 
     /**
-     *  Executes the simulation for a predefined number of times
+     *  Executes the simulation for a predefined number of runs
      */
     private static void executeCL()
     {

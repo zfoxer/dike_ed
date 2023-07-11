@@ -21,7 +21,7 @@
  *
  */
 
-package dike_ed.spi;
+package dike_ed.plugin_api;
 
 import java.util.ArrayList;
 import java.util.Arrays;

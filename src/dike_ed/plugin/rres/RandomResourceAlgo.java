@@ -24,7 +24,7 @@
 package dike_ed.plugin.rres;
 
 import dike_ed.Resource;
-import dike_ed.spi.*;
+import dike_ed.plugin_api.*;
 
 import java.util.List;
 import java.util.Vector;
@@ -135,6 +135,6 @@ public class RandomResourceAlgo extends Algo
     @Override
     public String description()
     {
-        return "Random resource first";
+        return "Random Resource First";
     }
 }
