@@ -1,5 +1,7 @@
 # Dike-ED
-Discrete-event simulator for medical emergency department resource allocation
+Discrete-event simulator for medical emergency department resource allocation.
+
+Experimental release. Based on Java 17.0.7.
 
 <pre>
 Copyright (C) 2021-2023 by Constantine Kyriakopoulos, zfox@users.sourceforge.net

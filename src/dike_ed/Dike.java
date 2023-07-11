@@ -712,6 +712,7 @@ public class Dike
      */
     public static void main(String... args)
     {
+        //  Execution with hard-coded setup
         executeCL();
     }
 }
