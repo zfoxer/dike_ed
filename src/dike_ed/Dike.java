@@ -23,7 +23,7 @@
 
 package dike_ed;
 
-import org.json.simple.parser.ParseException;
+//import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.*;
 import dike_ed.plugin.rres.*;
@@ -231,9 +231,9 @@ public class Dike
      *
      *  @param stateJson The state in JSON
      *  @throws IOException
-     *  @throws ParseException
+     *  //@throws ParseException
      */
-    private void init(String stateJson) throws IOException, ParseException
+    private void init(String stateJson) throws IOException//, ParseException
     {
     }
 
@@ -241,9 +241,9 @@ public class Dike
      *  Main initialisation point. Calls sub-init processes.
      *
      *  @throws IOException
-     *  @throws ParseException
+     *  //@throws ParseException
      */
-    private void init() throws IOException, ParseException
+    private void init() throws IOException//, ParseException
     {
         clear();
         try
