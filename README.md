@@ -12,6 +12,7 @@ License: GNU GPL Version 2
 ## Changelog
 
 <pre>
+0.4.0      2023-07-XX    A GUI to run the simulator is created
 0.3.5      2023-07-11    Introduction of a simple algorithm plugin API
                          Temporarily removed the json-simple dependency
                          Code clean-up

@@ -2,7 +2,7 @@
  * Dike ED: Discrete-event simulator for medical emergency departments.
  * Copyright (C) 2021, 2022, 2023 by Constantine Kyriakopoulos
  * zfox@users.sourceforge.net
- * @version 0.3.5
+ * @version 0.4.0
  *
  * @section LICENSE
  *

@@ -2,7 +2,7 @@
  * Dike ED: Discrete-event simulator for medical emergency departments.
  * Copyright (C) 2021, 2022, 2023 by Constantine Kyriakopoulos
  * zfox@users.sourceforge.net
- * @version 0.3.5
+ * @version 0.4.0
  *
  * @section LICENSE
  *
@@ -24,9 +24,11 @@
 package dike_ed;
 
 //import org.json.simple.parser.ParseException;
+
+import dike_ed.plugin.rres.RResFactory;
+
 import java.io.IOException;
 import java.util.*;
-import dike_ed.plugin.rres.*;
 
 /**
  *  Dike is the main simulation engine for Emergency Departments (EDs) of hospitals. This is
@@ -139,7 +141,7 @@ public class Dike
     /**
      *  Hardcoded version number
      */
-    private static final String VERSION = "0.3.5";
+    private static final String VERSION = "0.4.0";
 
     /**
      *  Pool containing all the events
@@ -690,8 +692,9 @@ public class Dike
     /**
      *  Executes the simulation for a predefined number of runs
      */
-    private static void executeCL()
+    private static void executeCL(String... args)
     {
+        System.out.println("Dike-ED Version " + VERSION + '\n');
         int i = 0;
         double avgBedTime = 0;
         while(i++ < EXECUTIONS)
@@ -712,7 +715,10 @@ public class Dike
      */
     public static void main(String... args)
     {
-        //  Execution with hard-coded setup
-        executeCL();
+        //  Execution either with UI or command line
+        if(args.length == 0)
+            DikeUI.main();
+        else
+            executeCL(args);
     }
 }
