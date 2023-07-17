@@ -37,6 +37,11 @@ import java.util.*;
 public class Dike
 {
     /**
+     *  Hardcoded version number
+     */
+    public static final String VERSION = "0.4.0";
+
+    /**
      *  Predefined triage levels
      */
     enum TriageLevel
@@ -137,11 +142,6 @@ public class Dike
             this.duration = duration;
         }
     }
-
-    /**
-     *  Hardcoded version number
-     */
-    private static final String VERSION = "0.4.0";
 
     /**
      *  Pool containing all the events
@@ -683,8 +683,8 @@ public class Dike
      */
     private static String usage()
     {
-        return "Dike " + VERSION
-                + "\n(C) 2022-2023 by Constantine Kyriakopoulos"
+        return "Dike-ED " + VERSION
+                + "\n(C) 2021-2023 by Constantine Kyriakopoulos"
                 + "\nReleased under GNU GPL v2"
                 + "\n\nUsage: java -jar dike.jar ...\n";
     }
@@ -694,7 +694,10 @@ public class Dike
      */
     private static void executeCL(String... args)
     {
-        System.out.println("Dike-ED Version " + VERSION + '\n');
+        System.out.println(usage());
+        System.out.println("Command line interface not yet implemented");
+        System.out.println("Using default configuration" + '\n');
+
         int i = 0;
         double avgBedTime = 0;
         while(i++ < EXECUTIONS)

@@ -340,15 +340,37 @@ public class DikeUI
         JMenuItem menuItemAbout;
         JMenuBar menuBar;
 
-        frame = new JFrame("Dike ED Simulator (C) 2021-2023 by Constantine Kyriakopoulos");
+        frame = new JFrame("Dike-ED Simulator (C) 2021-2023 by Constantine Kyriakopoulos");
         menuBar = new JMenuBar();
         menuBar.setVisible(true);
         fileMenu = new JMenu("File");
         menuItemExit = new JMenuItem("Exit");
+        menuItemExit.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent ev)
+            {
+                System.exit(0);
+            }
+        });
+
         fileMenu.add(menuItemExit);
         helpMenu = new JMenu("Help");
         menuItemAbout = new JMenuItem("About");
+        menuItemAbout.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent ev)
+            {
+                JOptionPane.showMessageDialog(frame,
+                        "Dike-ED v" + Dike.VERSION + "\n"
+                                + "\nDiscrete-event simulator for medical \nemergency department resource allocation.\n"
+                        + "(C) 2021-2023 by Constantine Kyriakopoulos."
+                                + "\nReleased under GNU GPL v2.",
+                        "About Dike-ED",
+                        JOptionPane.PLAIN_MESSAGE);
+            }
+        });
         helpMenu.add(menuItemAbout);
+
         frame.add(panel1);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new GridLayout());
