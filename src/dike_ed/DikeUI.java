@@ -339,8 +339,8 @@ public class DikeUI
         JMenuItem menuItemExit;
         JMenuItem menuItemAbout;
         JMenuBar menuBar;
-
         frame = new JFrame("Dike-ED Simulator (C) 2021-2023 by Constantine Kyriakopoulos");
+
         menuBar = new JMenuBar();
         menuBar.setVisible(true);
         fileMenu = new JMenu("File");
@@ -352,7 +352,6 @@ public class DikeUI
                 System.exit(0);
             }
         });
-
         fileMenu.add(menuItemExit);
         helpMenu = new JMenu("Help");
         menuItemAbout = new JMenuItem("About");
@@ -406,6 +405,14 @@ public class DikeUI
 
         if (randomResourceRadioButton.isSelected())
         {
+            if(Dike.WARDIES <= 0 || Dike.NURSES <= 0 || Dike.DOCTORS <= 0)
+            {
+                textPaneUtil.setText("Cannot execute RR Algo, resources are required.\n");
+                textPaneStats.setText("Cannot execute RR Algo, resources are required.\n");
+
+                return;
+            }
+
             Dike.ALGO_INDEX = 0;
             textPaneUtil.setText("Using RR Algo...\n");
             textPaneStats.setText("Using RR Algo...\n");

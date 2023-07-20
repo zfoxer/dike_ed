@@ -32,7 +32,9 @@
                 <constraints>
                   <tabbedpane title="Stats"/>
                 </constraints>
-                <properties/>
+                <properties>
+                  <toolTipText value=""/>
+                </properties>
                 <border type="none"/>
                 <children>
                   <scrollpane id="cf412">
@@ -44,7 +46,9 @@
                     <children>
                       <component id="c5d59" class="javax.swing.JTextPane" binding="textPaneStats">
                         <constraints/>
-                        <properties/>
+                        <properties>
+                          <toolTipText value="Useful simulation statistics are displayed here"/>
+                        </properties>
                       </component>
                     </children>
                   </scrollpane>
@@ -55,7 +59,9 @@
                 <constraints>
                   <tabbedpane title="Utilisation"/>
                 </constraints>
-                <properties/>
+                <properties>
+                  <toolTipText value=""/>
+                </properties>
                 <border type="none"/>
                 <children>
                   <scrollpane id="c0991">
@@ -69,6 +75,7 @@
                         <constraints/>
                         <properties>
                           <text value=""/>
+                          <toolTipText value="Simulation resource utilisation percentages are displayed here"/>
                         </properties>
                       </component>
                     </children>
@@ -92,7 +99,9 @@
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
+                <properties>
+                  <toolTipText value="Choose your algorithm to perform resource allocation"/>
+                </properties>
                 <border type="etched" title="Algorithm" title-justification="1">
                   <font/>
                   <title-color color="-4473925"/>
@@ -129,7 +138,9 @@
                 <constraints>
                   <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
+                <properties>
+                  <toolTipText value="Adjust miscellaneous parameters"/>
+                </properties>
                 <border type="etched" title="Misc" title-justification="1">
                   <title-color color="-4473925"/>
                 </border>
@@ -278,7 +289,9 @@
                   <grid id="92d0" layout-manager="GridLayoutManager" row-count="5" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints/>
-                    <properties/>
+                    <properties>
+                      <toolTipText value="Adjust emergency department resource numbers"/>
+                    </properties>
                     <border type="etched" title="Resources" title-justification="1">
                       <font/>
                       <title-color color="-4473925"/>

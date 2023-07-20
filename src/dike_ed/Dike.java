@@ -235,17 +235,15 @@ public class Dike
      *  @throws IOException
      *  //@throws ParseException
      */
-    private void init(String stateJson) throws IOException//, ParseException
+    private void init(String stateJson) throws IOException
     {
+        //  Not yet implemented
     }
 
     /**
      *  Main initialisation point. Calls sub-init processes.
-     *
-     *  @throws IOException
-     *  //@throws ParseException
      */
-    private void init() throws IOException//, ParseException
+    private void init() throws IOException
     {
         clear();
         try
